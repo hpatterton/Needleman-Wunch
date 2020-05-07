@@ -41,11 +41,38 @@ def needleman_wunch(seq1,seq2):
 			direction_matrix[i-1][j-1] = direction
 	return matrix, direction_matrix
 
+def align_nw(seq1, seq2, direction_matrix):
+	aligned_seq1 = ''
+	aligned_seq2 = ''
+	i=len(seq2)-1
+	j=len(seq1)-1
+	# Follow the direction matrix, and add symbols to
+	# aligned_seq1 and aligned_seq2
+	while i>= 0 and j >=0:
+		if direction_matrix[i][j] == 'D':
+			aligned_seq1 += '-'
+			aligned_seq2 += seq2[i]
+			i -= 1
+		elif direction_matrix[i][j] == 'L':
+			aligned_seq1 += seq1[j]
+			aligned_seq2 += '-'
+			j -= 1
+		else:
+			aligned_seq1 += seq1[j]
+			aligned_seq2 += seq2[i]
+			i -= 1
+			j -= 1
+	# We need to reverse the aligned sequences
+	alignment = aligned_seq1[::-1] + '\n' + aligned_seq2[::-1]
+	return alignment
+
 #driver code
-seq1='FMDTPLNE'
-seq2='FKHMEDPLE'
+seq1='MSRTKETARTKKTITSKKSKKASKGSDAASGVKTAQRRWRPGTVALREIRQFQRSTDLLLQKAPFQRLVREVSGAQKEGLRFQSSAILAAQEATESYIVSLLADTNRACIHSGRVTIQPKDIHLALCLRGERA'
+seq2='MARTKQTARKSTGGKAPRKQLATKAARKSAPATGGVKKPHRYRPGTVALREIRRYQKSTELLIRKLPFQRLVREIAQDFKTDLRFQSSAVMALQEACEAYLVGLFEDTNLCAIHAKRVTIMPKDIQLARRIRGERA'
 values,direction=needleman_wunch(seq1,seq2)
 for i in range(len(seq2)+1):
 	print(values[i])
 for i in range(len(seq2)):
 	print(direction[i])
+alignment = align_nw(seq1, seq2, direction)
+print(alignment)
