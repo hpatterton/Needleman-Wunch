@@ -8,7 +8,7 @@ The two sequences are specified in the code, for example:
 seq1='FMDTPLNE'  
 seq2='FKHMEDPLE'
 
-The program outputs the score matrix, direction of movement matrix (D=diagonal, V=vertical H=horizontal), and the alignment:
+The program outputs the score matrix, direction of movement matrix (D=diagonal, V=vertical, H=horizontal), and the alignment:
 
 [0, -2, -4, -6, -8, -10, -12, -14, -16]  
 [-2, 1, -1, -3, -5, -7, -9, -11, -13]  
