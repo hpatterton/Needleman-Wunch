@@ -9,7 +9,7 @@ seq1='FMDTPLNE'
 
 seq2='FKHMEDPLE'
 
-The program outputs the score matrix, direction of movement matrix, and the alignment:
+The program outputs the score matrix, direction of movement matrix (D=diagonal, V=vertical H=horizontal), and the alignment:
 
 [0, -2, -4, -6, -8, -10, -12, -14, -16]
 
